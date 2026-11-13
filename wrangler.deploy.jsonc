@@ -1,0 +1,19 @@
+{
+  // Cloudflare Workers deployment of the LM Fingerpoint Detector web app:
+  // static assets from web/dist + the /api/proxy relay bundled from api/proxy.ts.
+  "name": "lm-fingerpoint-detector",
+  "main": ".cf-worker/index.js",
+  "compatibility_date": "2026-09-22",
+  "compatibility_flags": ["enable_request_signal"],
+  "workers_dev": true,
+  "routes": [{ "pattern": "the0ne.eu.cc", "custom_domain": true }],
+  "assets": {
+    "directory": "./web/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
+  "vars": {
+    "ALLOWED_ORIGINS": "https://the0ne.eu.cc,https://lm-fingerpoint-detector.zmqdyx1012.workers.dev,https://lm.ikale.io"
+  },
+  "observability": { "enabled": false }
+}
